@@ -5,7 +5,7 @@
 
 1.登录Btcdo账户，在“个人中心”→“安全中心”获取API-KEY和API-SECRET  
 
-2.搭建[node](<link https://nodejs.org/zh-cn/>)环境，把代码`git clone`下来，运行`npm install`  
+2.搭建[node](link "https://nodejs.org/zh-cn/")环境，把代码`git clone`下来，运行`npm install`
 
 2.配置`config/config.js`  
 
