@@ -12,3 +12,4 @@
 3.使用`src/utils/apiMethod`中的各个方法，也可以直接使用`src/utils/fetch`方法，采用和`window.fetch`相同的包，支持`.then`链式调用和`async await`同步写法  
 
 4.具体接口请参考[官方文档](link "https&#x3A;//github.com/btcdolab/btcdo-official-api-docs/blob/master/rest-api.md")
+
