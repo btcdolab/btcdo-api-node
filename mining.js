@@ -3,7 +3,6 @@ let apiMethod = require('./src/utils/apiMethod');
 (async function mining() {
 
     let currentPrice
-
     let myCurrencyAvailable = 0
     let myCurrencyFrozen = 0
     let currency = 'BDB'
