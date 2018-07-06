@@ -51,7 +51,7 @@ module.exports = function ({
     headers['API-UNIQUE-ID'] = headers['API-UNIQUE-ID'] || apiUniqueId
     headers['API-SIGNATURE'] = headers['API-SIGNATURE'] || signature
     headers['API-KEY'] = headers['API-KEY'] || apiKey
-    headers['Content-Type'] = 'multipart/form-data'
+    headers['Content-Type'] = 'application/json'
 
 
     // 发送参数
