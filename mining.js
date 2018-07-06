@@ -1,11 +1,12 @@
 let apiMethod = require('./src/utils/apiMethod');
+let Decimal = require('decimal.js');
 
 try {
     (async function mining() {
 
         let currentPrice
-        let myCurrencyAvailable = 0
-        let myCurrencyFrozen = 0
+        let myCurrencyAvailable = new Decimal(0)
+        let myCurrencyFrozen = new Decimal(0)
         let currency = 'ICC'
         let symbol = 'ICC_ETH'
         let lastSalePrice = 0, lastSaleAmount = 0
@@ -16,10 +17,10 @@ try {
             res.accounts && res.accounts.forEach((v, i) => {
                 if (v.currency == currency) {
                     if (v.type === 'SPOT_AVAILABLE') {
-                        myCurrencyAvailable += v.balance
+                        myCurrencyAvailable = myCurrencyAvailable.plus(new Decimal(v.balance))
                     }
                     if (v.type === 'SPOT_FROZEN') {
-                        myCurrencyFrozen += v.balance
+                        myCurrencyFrozen = myCurrencyFrozen.plus(new Decimal(v.balance))
                     }
                 }
             })
@@ -51,13 +52,13 @@ try {
             console.warn(`自动化订单价格为`, toSalePrice)
 
             apiMethod.createOrder({
-                amount: 700,
+                amount: 1100,
                 customFeatures: 65536,
                 orderType: 'SELL_LIMIT',
                 price: toSalePrice,
                 symbol: symbol,
             }, true).then(res => {
-                console.warn('下单成功！', res)
+                console.warn('下单！', res)
             }).catch(err => {
                 console.warn('下单报错！', err)
             })
