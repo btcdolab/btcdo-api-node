@@ -1,4 +1,5 @@
-var apiMethod = require('./src/utils/apiMethod')
+var apiMethod = require('./src/utils/apiMethod.js')
+var commonMethod = require('./src/utils/commonMethod.js')
 
 apiMethod.getAccounts().then(body => {
   // console.warn('this is fetch body', body)
@@ -66,7 +67,6 @@ apiMethod.getMatchesOrderInfo(5801165).then(body => {
   // console.warn('this is fetch body', body)
 })
 
-
-
+commonMethod.findSaleOrder()
 
 console.warn("end")
