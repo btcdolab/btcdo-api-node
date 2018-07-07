@@ -40,7 +40,7 @@ function cancelBuyOrder(targetOrderId, symbol) {
     targetOrderId,
     symbol,
     orderType: 'CANCEL_BUY_LIMIT',
-  })
+  }, true)
 }
 
 
@@ -117,14 +117,16 @@ async function findAllOrder(symbol, offsetId = 0, limit = 100) {
 async function cancelAppointedOrder(orderArr) {
   let cancelReady = true
   await Promise.all(orderArr.map((v, i) => {
+
     if (v.type === 'BUY_LIMIT') {
       return cancelBuyOrder(v.id, v.symbol)
     }
     if (v.type === 'SELL_LIMIT') {
       return cancelSaleOrder(v.id, v.symbol)
     }
+
   })).then(res => {
-    
+
   }).catch(err => {
     cancelReady = false
   })
@@ -171,7 +173,29 @@ async function getSpecifiedAccount(currency) {
   return [myCurrencyAvailable.toString(), myCurrencyFrozen.toString()]
 }
 
+// 加法
+function accAdd(num1, num2) {
+  return Decimal.add(num1, num2).toString()
+}
+// 乘法
+function accMul(num1, num2) {
+  return Decimal.mul(num1, num2).toString()
+}
 
+// 减法
+function accSub(num1, num2) {
+  return Decimal.sub(num1, num2).toString()
+}
+
+// 除法
+function accDiv(num1, num2) {
+  return Decimal.div(num1, num2).toString()
+}
+
+// 取平均数
+function getAverage(num1, num2) {
+  return (Decimal.add(num1, num2).div(2)).toString()
+}
 
 
 module.exports = {
@@ -187,4 +211,9 @@ module.exports = {
   cancelAllOrder, //撤销所有订单
   getLatelyBuyAndSalePrice, // 获取最高的买单价格和最低的卖单价格
   getSpecifiedAccount, // 获取我的账户某个币种的信息
+  accAdd, // 精度加法
+  accMul, // 精度乘法
+  accSub, // 精度减法
+  accDiv, // 精度除法
+  getAverage, //精度取平均数
 }
