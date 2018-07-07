@@ -3,9 +3,9 @@ var uuidV1 = require('uuid/v1')
 
 
 // api key
-root.apiKey = 'AAAAAZsxZk1PlAA7DaQz32Fze8Prk7wh'
+root.apiKey = 'your api key'
 // api secret key
-root.secretKey = 'maH8qFlvVswpjoohoqzr'
+root.secretKey = 'your api secret key'
 
 
 // 请求方法
@@ -31,6 +31,8 @@ root.apiTime = new Date().getTime()
 // api 独立Id 在fetch方法中可以生成，这里记录下使用方法
 root.apiUniqueId = uuidV1()
 
+// 请求超时时间，默认5000
+root.timeout = 5000
 
 
 module.exports = root
