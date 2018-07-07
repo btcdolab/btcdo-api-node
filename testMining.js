@@ -59,12 +59,6 @@ async function cancelAll() {
   }
 }
 
-function getAverage(num1, num2) {
-  num1 = new Decimal(num1)
-  num2 = new Decimal(num2)
-  return (num1.plus(num2))
-}
-
 
 async function getMyBDBAssets() {
   return await commonMethod.getSpecifiedAccount('BDB')
